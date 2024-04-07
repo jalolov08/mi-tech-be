@@ -62,7 +62,7 @@ export async function register(req: Request, res: Response) {
 
     await OtpModel.deleteOne({ email, code });
     const token = jwt.sign(
-      { email: newUser.email, userId: newUser._id },
+      { email: newUser.email, userId: newUser._id, role: newUser.role },
       JWT_SECRET,
       { expiresIn: "1y" }
     );
@@ -161,7 +161,7 @@ export async function login(req: Request, res: Response) {
     }
 
     const token = jwt.sign(
-      { email: user.email, userId: user._id },
+      { email: user.email, userId: user._id, role: user.role },
       JWT_SECRET,
       { expiresIn: "1y" }
     );

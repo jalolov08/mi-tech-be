@@ -9,6 +9,7 @@ const UserSchema: Schema = new Schema(
     name: { type: String, required: true },
     surname: { type: String },
     address: { type: String },
+    role: { type: String, enum: ["admin", "user"], default: "user" },
   },
   { timestamps: true }
 );
